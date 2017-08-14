@@ -1,9 +1,9 @@
 ### 操作步骤总结
 - 在自己的github，选择Create repository，给自己的repo起个名字
 - github提供了3种方式，让我们quick setup our repo：
--- create a new repository on the command line
--- push an existing repository from the command line
--- import code from another repository
+  - create a new repository on the command line
+  - push an existing repository from the command line
+  - import code from another repository
 - 在这里我们使用第一种方式
 - 搞定！
 
