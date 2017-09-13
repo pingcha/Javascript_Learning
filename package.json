@@ -1,0 +1,6 @@
+{
+  "name": "package",
+  "dependencies": {
+    "jsonfile": "3.0.1"
+  }
+}
