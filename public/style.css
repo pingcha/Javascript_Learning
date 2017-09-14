@@ -1,3 +1,73 @@
+.navbar-brand {
+  padding: 15px 30px;
+}
+
+.navbar-brand img {
+  width: 25px;
+  height: 25px;
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+  height: 580px;
+  margin-bottom: 40px;
+}
+/* Since positioning the image, we need to help out the caption */
+
+/* Declare heights because of positioning of img element */
+
+.carousel .item {
+  height: 580px;
+  background-color: #777;
+  /* position: relative; */
+}
+
+.carousel .item1 {
+  background: linear-gradient(rgba(12,12,9,0.4), rgba(12,12,9,0.4)),url(https://o4a7cbihz.qnssl.com/avatar/614bb7be-491b-4c23-be79-0bb504ec54f6);
+  background-position: center 80%;
+  background-size: cover;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  width: 100%;
+}
+
+.carousel .item2 {
+  background: linear-gradient(rgba(12,12,9,0.4), rgba(12,12,9,0.4)),url(http://opkslf6o7.bkt.clouddn.com/github.png);
+  background-position: center 80%;
+  background-size: cover;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  width: 100%;
+}
+
+.carousel-caption {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 960px;
+  min-width: 320px;
+  height: 580px;
+  padding-top: 180px;
+  z-index: 91;
+  text-align: center;
+}
+
+.github{
+  padding-top: 460px;
+}
+
+/* .carousel-image::after {
+  background-image: linear-gradient(rgba(12,12,9,0.4), rgba(12,12,9,0.4));
+} */
+
+body {
+  font-family: "Helvetica Neue",Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+}
+
 .main-header {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -12,15 +82,125 @@
   color: #fff;
 }
 
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+.courseinfo-avatar {
   height: 60px;
+  width: 60px;
+  vertical-align: middle;
+  border: 2px solid #eee;
+  border-radius: 10px;
+  cursor: default;
+  -webkit-box-shadow: 4px 4px 4px rgba(0,0,0,0.2);      
+  -moz-box-shadow: 4px 4px 4px rgba(0,0,0,0.2);      
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.2);      
+  -webkit-transition: all 0.5s ease-out;     
+  -moz-transition: all 0.5s ease;      
+  -o-transition: all 0.5s ease; 
+}
+
+.courseinfo-avatar:hover {      
+  -webkit-transform: rotate(-8deg);      
+  -moz-transform: rotate(-8deg);      
+  -o-transform: rotate(-8deg);
+}
+
+.courseinfo {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.course-btn {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  cursor: pointer;
+  margin: 0 auto;
+  -webkit-border-radius: 0.2em;
+  border-radius: 0.2em;
+  text-align: center;
+  font-size: 1.428em;
+  letter-spacing: 0.3em;
+  padding: 0.5em 1.4em;
+  margin-top: 2.85em;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  letter-spacing: 1px;
+  color: white;
+  background: #4499EE;
+  border-radius: 12px;
+  border: 2px solid #4499EE;
+}
+
+.course-btn:hover {
+  color: white;
+  background: #0679EC;
+  text-decoration:none; /*CSS下划线效果：无下划线*/
+  border-bottom: 2px #0099CC /*CSS加一个只有下边的框 边框为虚线*/
+}
+
+.github-btn {
+  display: block;
+  margin-top: 4px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 360px;
+  text-align: center;
+  font-family: "Helvetica Neue",Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Source Han Sans CN", "Source Han Sans SC", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;  
+  padding: 0.5em 1.4em;
+  color: black;
+  background-color: #EEEEEE;
+  border-radius: 0.2em;
+  border-color: 2px solid #313131;
+}
+
+.github-btn:hover {
+  text-decoration:none;
+}
+
+.avatar {
+  height: 48px;
+  width: 48px;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+  border: 2px solid #eee;
+  border-radius: 20px;
+  float: left;
+  margin-right: 18px;
+  cursor: default;
+}
+
+.footer {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  margin-top: 40px;
+  font-size: 16px;
+  line-height: 1.5;
   background-color: #f5f5f5;
+  color: #586069;
+  border-top: 1px solid #eaecef;
 }
 
 .footer-text {
-  margin: 20px 100px;
-  font-weight: bold;
+  position: absolute;
+  top: 40px;
+  left: 38%;
+}
+
+
+.footer img {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top:20px;
+  left:50%;
+}
+.avatar {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+  border-radius: 10px;
+  float: left;
+  margin-right: 18px;
+  cursor: default;
 }
