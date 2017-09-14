@@ -19,13 +19,13 @@
 
 /* Declare heights because of positioning of img element */
 
-.carousel .item {
+.item {
   height: 580px;
   background-color: #777;
   /* position: relative; */
 }
 
-.carousel .item1 {
+.item1 {
   background: linear-gradient(rgba(12,12,9,0.4), rgba(12,12,9,0.4)),url(https://o4a7cbihz.qnssl.com/avatar/614bb7be-491b-4c23-be79-0bb504ec54f6);
   background-position: center 80%;
   background-size: cover;
@@ -35,7 +35,7 @@
   width: 100%;
 }
 
-.carousel .item2 {
+.item2 {
   background: linear-gradient(rgba(12,12,9,0.4), rgba(12,12,9,0.4)),url(http://opkslf6o7.bkt.clouddn.com/github.png);
   background-position: center 80%;
   background-size: cover;
@@ -45,7 +45,7 @@
   width: 100%;
 }
 
-.carousel-caption {
+.caption1 {
   margin-left: auto;
   margin-right: auto;
   max-width: 960px;

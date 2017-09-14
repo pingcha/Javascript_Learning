@@ -38,7 +38,7 @@
     <!-- 轮播（Carousel) -->
     <div class="carousel-inner">
         <div class="item item1 active" >
-          <div class="carousel-caption">
+          <div class="carousel-caption caption1">
             <h1><a href="https://web.xinshengdaxue.com/home/lessons/details?course_id=40" style="color:#fff">{{ courseInfo.title }}</a></h1>
             <div>
               <img class="courseinfo-avatar" src="https://ws1.sinaimg.cn/large/006tKfTcgy1fi7s7vo8y0j30hs0hsaay.jpg" alt="">
@@ -189,62 +189,72 @@
 
 <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</html>
+
 
 <script>
-  // vue官网： https://cn.vuejs.org/v2/guide/
-  // 初始化Vue
+    // vue官网： https://cn.vuejs.org/v2/guide/
+    // 初始化Vue
+    
+    var app = new Vue({
+      el: '#app',   // #app 和html中div#id的 app 对应
+      data: {
+        wordsList: [],  // 小伙伴们的心里话
+        courseInfo: {} , // 课程基本信息
+        name: '',
+        account: '',
+        content: ''
+      },
+      methods: {
+        fetchCourseInfo:function() {
+          axios.get('https://js.xinshengdaxue.com/api/v1/learnJS/course/1/detail')
+            .then(function (response) {
+              app.courseInfo = response.data.courseInfo;
+            })
+            .catch(function (error) {
+              console.log(error);
+            })
+        },
+        fetchHeartWords: function() {
+          axios.get('https://js.xinshengdaxue.com/api/v1/learnJS/course/1/words')
+            .then(function (response) {
+              app.wordsList = response.data.words;
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        },
   
-  var app = new Vue({
-    el: '#app',   // #app 和html中div#id的 app 对应
-    data: {
-      wordsList: [],  // 小伙伴们的心里话
-      courseInfo: {} , // 课程基本信息
-      name: '',
-      account: '',
-      content: ''
-    },
-    methods: {
-      fetchCourseInfo:function() {
-        axios.get('https://js.xinshengdaxue.com/api/v1/learnJS/course/1/detail')
-          .then(function (response) {
-            app.courseInfo = response.data.courseInfo;
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
-      },
-      fetchHeartWords: function() {
-        axios.get('https://js.xinshengdaxue.com/api/v1/learnJS/course/1/words')
-          .then(function (response) {
-            app.wordsList = response.data.words;
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-      },
-
-      //对老师说点什么呢？
-      sendData: function() {
-        axios.post('https://js.xinshengdaxue.com/api/v1/learnJS/sayToMe',{
-            name: app.name,
-            account: app.account,
-            content: app.content
-          })
-          .then(function (response) {
-            if (response.data && response.data.code === 1) {
-              alert('提交成功');
-            } else if (response.data.code === 0) {
-              alert(response.data.message);
-            }
-          })
-          .catch(function (error) {
-            console.log(alert);
-          })
+        //对老师说点什么呢？
+        sendData: function() {
+          axios.post('https://js.xinshengdaxue.com/api/v1/learnJS/sayToMe',{
+              name: app.name,
+              account: app.account,
+              content: app.content
+            })
+            .then(function (response) {
+              if (response.data && response.data.code === 1) {
+                alert('提交成功');
+              } else if (response.data.code === 0) {
+                alert(response.data.message);
+              }
+            })
+            .catch(function (error) {
+              console.log(alert);
+            })
+        }
       }
-    }
+    });
+    app.fetchHeartWords();
+    app.fetchCourseInfo();
+  </script>
+
+  <script>
+  $(function(){
+    // 初始化轮播
+    $("#myCarousel").carousel('cycle');
   });
-  app.fetchHeartWords();
-  app.fetchCourseInfo();
-</script>
+  </script>
+
+</html>
+
 
