@@ -25,8 +25,6 @@
       <ul class="nav navbar-nav">
         <li><a href="#heart-words">小伙伴们的心里话</a></li>
         <li><a href="#self-intro">我的介绍</a></li>
-        <li><a href="#my-hw">我的作业</a></li>
-        <li><a href="https://github.com/CaoZhens">我的GitHub</a></li>
       </ul>
     </div>
   </nav>
@@ -110,43 +108,36 @@
           <h3 class="panel-title">我的个人介绍</h3>
         </div>
         <div class="panel-body">
-          <li>通信小硕，2013年毕业，目前在某运营商研究院工作，主业数据分析，近一年来正转型机器学习</li>
-          <li>工具使用与开发经验包括：SPSS Modeler、SAS EG、Oracle、Impala等工具，Python（包括Scrapy爬虫、Pandas数据处理、sklearn机器学习）</li>
-          <li>工作以来，一直偏重数据分析，希望借此课程好好学习JS相关技术</li>
+          <li>1年平面设计经验，2016年毕业，正转型前端开发学习</li>
+          <li>工具使用与开发经验包括：Bootstrap框架、Photoshop等工具，Javascript（包括HTML5、CSS3、第三方库学习）</li>
+          <li>工作以来，依然对前端充满兴趣，借此课程入门JS相关技术，希望能够从事互联网技术的工作。</li>
         </div>
       </div>
     </div>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">GIT & GITHUB</h3>
+      </div>
+      <div class="panel-body">
+        <li class="list-group-item" v-for="item in gitTopics">
+          <a :href="item.url">{{ item.title }}</a>
+        </li>
+      </div>
+    </div>
 
-    <div id="my-hw" class="col-md-12">
+    <div id="cate-log" class="col-md-12">
       <div class="panel panel-primary">
         <div class="panel-heading">
-          <h3 class="panel-title">我的学习记录</h3>
+          <h3 class="panel-title">课程的技术文档</h3>
         </div>
         <div class="panel-body">
-          <li class="list-group-item">
-            <a href="https://github.com/xugy0926/getting-started-with-javascript/blob/master/homework/lesson1/caozhen.md">
-              代码执行流程的类比
-            </a>
-          </li>
-          <li class="list-group-item">
-            <a href="https://github.com/xugy0926/getting-started-with-javascript/blob/master/homework/lesson2/caozhen.md">
-              编程中为什么会有丰富的数据格式
-            </a>
-          </li>
-          <li class="list-group-item">
-            <a href="https://github.com/xugy0926/getting-started-with-javascript/blob/master/homework/lesson5/caozhen.md">
-            函数的定义与使用
-            </a>
-          </li>
-          <li class="list-group-item">
-            <a href="https://github.com/xugy0926/getting-started-with-javascript/blob/master/homework/lesson6/caozhen.md">
-            提高代码兼容性与可读性的操作实践  
-            </a>
+          <li class="list-group-item" v-for="item in topics">
+            <a :href="item.url">{{ item.title }}</a>
           </li>
         </div>
       </div>
     </div>
-
 
     <div id="heart-words" class="col-md-12">
       <div class="panel panel-primary">
@@ -175,10 +166,10 @@
   </div>
 
   <footer class="footer">
-      <img class="avartar" src="http://opkslf6o7.bkt.clouddn.com/image/jpg/%E5%BE%AE%E4%BF%A1%E5%A4%B4%E5%83%8F.JPG">
+      <img class="avartar" src="https://ws4.sinaimg.cn/large/006tKfTcgy1fikoe96wyej30hs0hsdga.jpg">
       <p class="footer-text">Designed by
-        <a href="https://github.com/CaoZhens" target="_blank">
-          <span style="font-weight: bold">CaoZhen</span>
+        <a href="https://github.com/pingcha" target="_blank">
+          <span style="font-weight: bold">Pincha</span>
         </a>
         © 2017
       </p>
@@ -200,6 +191,8 @@
       data: {
         wordsList: [],  // 小伙伴们的心里话
         courseInfo: {} , // 课程基本信息
+        gitTopics: [],
+        topics: [],
         name: '',
         account: '',
         content: ''
@@ -218,6 +211,16 @@
           axios.get('https://js.xinshengdaxue.com/api/v1/learnJS/course/1/words')
             .then(function (response) {
               app.wordsList = response.data.words;
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        },
+        getTopics: function() {
+          axios.get('https://js.xinshengdaxue.com/api/v1/learnJS/course/1/catelog')
+            .then(function (response) {
+              app.gitTopics = response.data.catelog.gitTopicsList;
+              app.topics = response.adta.catelog.topicsList;
             })
             .catch(function (error) {
               console.log(error);
