@@ -25,6 +25,7 @@
       <ul class="nav navbar-nav">
         <li><a href="#heart-words">小伙伴们的心里话</a></li>
         <li><a href="#self-intro">我的介绍</a></li>
+        <li><a href="#cate-log">课程的技术文档</a></li>
       </ul>
     </div>
   </nav>
@@ -114,19 +115,44 @@
         </div>
       </div>
     </div>
-    
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h3 class="panel-title">GIT & GITHUB</h3>
-      </div>
-      <div class="panel-body">
-        <li class="list-group-item" v-for="item in gitTopics">
-          <a :href="item.url">{{ item.title }}</a>
-        </li>
-      </div>
-    </div>
 
-    <div id="cate-log" class="col-md-12">
+    <div id="heart-words" class="col-md-8">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">小伙伴们的心里话</h3>
+          </div>
+          <div class="panel-body">
+            <div class="words-panel" v-for="item in wordsList">
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object avatar" v-bind:src="item.avatar" alt="..">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">
+                    {{ item.name }}
+                  </h4>
+                    {{ item.words }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    <div id="cate-log" class="col-md-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">GIT & GITHUB</h3>
+        </div>
+        <div class="panel-body">
+          <li class="list-group-item" v-for="item in gitTopics">
+            <a :href="item.url">{{ item.title }}</a>
+          </li>
+        </div>
+      </div>
+
       <div class="panel panel-primary">
         <div class="panel-heading">
           <h3 class="panel-title">课程的技术文档</h3>
@@ -139,30 +165,7 @@
       </div>
     </div>
 
-    <div id="heart-words" class="col-md-12">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <h3 class="panel-title">小伙伴们的心里话</h3>
-        </div>
-        <div class="panel-body">
-          <div class="words-panel" v-for="item in wordsList">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img class="media-object avatar" v-bind:src="item.avatar" alt="..">
-                </a>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading">
-                  {{ item.name }}
-                </h4>
-                  {{ item.words }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
 
   <footer class="footer">
@@ -190,7 +193,7 @@
       el: '#app',   // #app 和html中div#id的 app 对应
       data: {
         wordsList: [],  // 小伙伴们的心里话
-        courseInfo: {} , // 课程基本信息
+        courseInfo: [] , // 课程基本信息
         gitTopics: [],
         topics: [],
         name: '',
@@ -220,7 +223,7 @@
           axios.get('https://js.xinshengdaxue.com/api/v1/learnJS/course/1/catelog')
             .then(function (response) {
               app.gitTopics = response.data.catelog.gitTopicsList;
-              app.topics = response.adta.catelog.topicsList;
+              app.topics = response.data.catelog.topicsList;
             })
             .catch(function (error) {
               console.log(error);
@@ -247,6 +250,7 @@
         }
       }
     });
+    app.getTopics();
     app.fetchHeartWords();
     app.fetchCourseInfo();
   </script>
